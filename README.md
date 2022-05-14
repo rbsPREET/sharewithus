@@ -1,10 +1,9 @@
 # ShareWithUs
+
+## Technologies
 #### Client: React
----
 #### Server: Node.js
----
 #### Database: MongoDB
----
 #### Cloud: Firestore (Firebase)
 
 ## Installation
