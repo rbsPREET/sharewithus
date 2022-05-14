@@ -1,4 +1,4 @@
-# ShareWithUs
+# ShareWithUs - (rbsPREET / Rotem Bar-Sela)
 
 ## Technologies
 #### Client: React (Hooks, ContextAPI)
