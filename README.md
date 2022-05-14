@@ -1,9 +1,9 @@
 # ShareWithUs
 
 ## Technologies
-#### Client: React
-#### Server: Node.js
-#### Database: MongoDB
+#### Client: React (Hooks, ContextAPI)
+#### Server: Node.js (Express, Mongoose)
+#### Database: MongoDB (Atlas)
 #### Cloud: Firestore (Firebase)
 
 ## Installation
