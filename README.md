@@ -15,11 +15,11 @@ cd /sharewithus -> npm i
 ```
 First Terminal
 ```bash
-cd /client -> npm start
+cd /sharewithus/client -> npm start
 ```
 Second Terminal
 ```bash
-cd /server -> npm start
+cd /sharewithus/server -> npm start
 ```
 ## Create .env file at /server folder 
 ```env
