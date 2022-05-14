@@ -1,12 +1,9 @@
 # ShareWithUs
-#### Client:
-React
+#### Client: React
 
-#### Server:
-Node.js
+#### Server: Node.js
 
-#### Database:
-MongoDB
+#### Database: MongoDB
 
 ## Installation
 Open Terminal and cd to /sharewithus folder
