@@ -1,9 +1,8 @@
 # sharewithus
 Client:
-
 React
-Server:
 
+Server:
 Node.js
 
 Database:
