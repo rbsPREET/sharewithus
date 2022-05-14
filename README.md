@@ -11,7 +11,7 @@ MongoDB
 ## Installation
 Open Terminal and cd to /sharewithus folder
 ```bash
-npm i
+cd /sharewithus -> npm i
 ```
 First Terminal
 ```bash
