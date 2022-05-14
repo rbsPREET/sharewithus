@@ -5,6 +5,8 @@
 
 #### Database: MongoDB
 
+#### Cloud: Firestore (Firebase)
+
 ## Installation
 Open Terminal and cd to /sharewithus folder
 ```bash
