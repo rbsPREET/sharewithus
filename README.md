@@ -1,11 +1,11 @@
 # ShareWithUs
-Client:
+####Client:
 React
 
-Server:
+####Server:
 Node.js
 
-Database:
+####Database:
 MongoDB
 
 ## Installation
