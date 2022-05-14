@@ -27,4 +27,4 @@ MONGO_URL=<Go to https://www.mongodb.com/cloud to create a new project and paste
 JWT_SECRET=<replace>
  ```
  
-WEBSITE LINK SOON
+> WEBSITE LINK SOON
