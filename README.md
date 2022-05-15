@@ -1,10 +1,10 @@
 # ShareWithUs - (rbsPREET / Rotem Bar-Sela)
 
 ## Technologies
-#### Client: React (Hooks, ContextAPI)
-#### Server: Node.js (Express, Mongoose)
-#### Database: MongoDB (Atlas)
-#### Cloud: Firestore (Firebase)
+* Client: React (Hooks, ContextAPI)
+* Server: Node.js (Express, Mongoose)
+* Database: MongoDB (Atlas)
+* Cloud: Firestore (Firebase)
 
 ## Installation
 Open Terminal and cd to /sharewithus folder
