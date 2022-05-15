@@ -1,5 +1,8 @@
 # ShareWithUs - (rbsPREET / Rotem Bar-Sela)
 
+Share your personal life stories with other people
+(inspired by askpeople.net)
+
 ## Technologies
 * Client: React (Hooks, ContextAPI)
 * Server: Node.js (Express, Mongoose)
