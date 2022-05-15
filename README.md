@@ -1,6 +1,6 @@
 # ShareWithUs - (rbsPREET / Rotem Bar-Sela)
 
-Share your personal life stories with other people (inspired by askp.co.il)
+Share your personal life stories with other people anonymously (inspired by askp.co.il)
 > WEBSITE LINK SOON
 
 ## Technologies
