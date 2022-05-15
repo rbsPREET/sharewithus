@@ -67,12 +67,17 @@ const CreatePost = () => {
         { category: "Fitness", isActive: false, icon: <FitnessCenter /> },
     ]
 
+    // fetch data when navigating back and forth in the steps
+    const [postDataTemp, setPostDataTemp] = useState({
+        categorySelectedId: null, title: '', description: ''
+    })
+
     const getStepContent = (step) => {
         switch (step) {
             case 0:
-                return <CategoryForm categoriesList={categoriesList} handleSelectCategory={handleSelectCategory} />;
+                return <CategoryForm postDataTemp={postDataTemp} setPostDataTemp={setPostDataTemp} categoriesList={categoriesList} handleSelectCategory={handleSelectCategory} />;
             case 1:
-                return <ContentForm handleContentForm={handleContentForm} />;
+                return <ContentForm postDataTemp={postDataTemp} setPostDataTemp={setPostDataTemp} handleContentForm={handleContentForm} />;
             case 2:
                 return <ReviewForm data={postDetails} />;
             default:
@@ -82,7 +87,7 @@ const CreatePost = () => {
 
     return (
         <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-            <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+            <Paper variant="outlined" square sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
                 <IconButton LinkComponent={Link} to='/' color='primary'>
                     <Home />
                 </IconButton>

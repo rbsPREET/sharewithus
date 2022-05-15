@@ -3,6 +3,7 @@ import CategorySection from './CategorySection'
 import { FamilyRestroom, Favorite, FitnessCenter, Refresh } from '@mui/icons-material'
 import { Box, Divider, IconButton, List, ListItem, ListItemText, Paper, Stack, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import useFetch from '../../../hooks/useFetch'
 
 const categoryData = [
     {
@@ -102,6 +103,8 @@ const ListItemStyled = styled(ListItem)(({ theme }) => ({
 }))
 
 const LeftSideContent = ({ commentsList }) => {
+    const { data } = useFetch("/categories")
+
     return (
         <Box>
             {/* Lastest comments on Posts at @ShareWithUs  */}
@@ -144,8 +147,8 @@ const LeftSideContent = ({ commentsList }) => {
                 </Paper>
             </Box>
             {/* Display all the Categories lastest Posts */}
-            {categoryData.map((item) => (
-                <CategorySection key={item.categoryName} category={item} />
+            {data.map((category) => (
+                <CategorySection key={category._id} category={category} />
             ))}
         </Box>
     )

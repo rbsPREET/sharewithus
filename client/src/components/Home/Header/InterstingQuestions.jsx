@@ -4,7 +4,7 @@ import React from 'react'
 const InterstingQuestions = () => {
     return (
         <Box flex={1}>
-            <Paper sx={{ p: 1, pt: 0.3, pb: 0 }} >
+            <Paper sx={{ p: 1, pb: 0 }} >
                 <Stack>
                     <Typography variant='h6' pb={1}>
                         Intersting Questions (Date.now())

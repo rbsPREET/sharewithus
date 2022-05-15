@@ -19,8 +19,13 @@ export const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12)
         const result = await User.create({ username, email, password: hashedPassword, age, gender })
-        const token = jwt.sign({ id: result._id, email: result.email }, process.env.JWT_SECRET, { expiresIn: "3h" })
-        res.status(200).json({ result, token })
+        const token = jwt.sign({ id: result._id, email: result.email, isAdmin: result.isAdmin }, process.env.JWT_SECRET, { expiresIn: "3h" })
+        res.cookie(
+            "access_token",
+            token,
+            {
+                httpOnly: true
+            }).status(200).json({ result, token })
     } catch (err) {
         res.status(500).json({ message: "ERROR: Please try again later" })
     }

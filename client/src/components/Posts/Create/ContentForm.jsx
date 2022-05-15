@@ -3,20 +3,33 @@ import React, { useEffect, useState } from 'react'
 
 const ariaLabel = { 'aria-label': 'description' };
 
-const ContentForm = ({ handleContentForm }) => {
+const ContentForm = ({ postDataTemp, setPostDataTemp, handleContentForm }) => {
     const [contentDetails, setContentDetails] = useState({
         title: '', description: ''
     })
 
-
     const handleChange = (e) => {
         handleContentForm(e)
+
+        // handle temp content data
+        setPostDataTemp({
+            ...postDataTemp,
+            [e.target.name]: e.target.value
+        })
 
         setContentDetails({
             ...contentDetails,
             [e.target.name]: e.target.value
         })
     }
+
+    useEffect(() => {
+        setContentDetails({
+            ...contentDetails,
+            title: postDataTemp.title,
+            description: postDataTemp.description
+        })
+    }, [])
 
     return (
         <>
