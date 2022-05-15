@@ -10,15 +10,15 @@ Share your personal life stories with other people anonymously (inspired by askp
 * Cloud: [Cloudinary](https://cloudinary.com/ "Cloudinary")
 
 ## Installation
-Open Terminal and cd to /sharewithus folder
+1. Open Terminal and cd to /sharewithus folder
 ```bash
 cd /sharewithus -> npm i
 ```
-First Terminal
+2. First Terminal
 ```bash
 cd /sharewithus/client -> npm start
 ```
-Second Terminal
+3. Second Terminal
 ```bash
 cd /sharewithus/server -> npm start
 ```
