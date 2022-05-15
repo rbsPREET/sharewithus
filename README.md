@@ -7,7 +7,7 @@ Share your personal life stories with other people anonymously (inspired by askp
 * Client: React (Hooks, ContextAPI)
 * Server: Node.js (Express, Mongoose)
 * Database: MongoDB (Atlas)
-* Cloud: [Cloudinary](https://cloudinary.com/)
+* Cloud: [Cloudinary](https://cloudinary.com/ "Cloudinary")
 
 ## Installation
 Open Terminal and cd to /sharewithus folder
