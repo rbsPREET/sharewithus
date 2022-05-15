@@ -1,7 +1,6 @@
 # ShareWithUs - (rbsPREET / Rotem Bar-Sela)
 
-Share your personal life stories with other people
-(inspired by askpeople.net)
+Share your personal life stories with other people (inspired by askp.co.il)
 
 ## Technologies
 * Client: React (Hooks, ContextAPI)
