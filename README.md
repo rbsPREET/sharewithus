@@ -4,9 +4,9 @@ Share your personal life stories with other people anonymously (inspired by askp
 > WEBSITE LINK SOON
 
 ## Technologies
-* Client: React (Hooks, ContextAPI)
-* Server: Node.js (Express, Mongoose)
-* Database: MongoDB (Atlas)
+* Client: [React] (https://reactjs.org/ "React") (Hooks, ContextAPI)
+* Server: [Node.js](https://nodejs.org/en/ "Node.js") (Express, Mongoose)
+* Database: [MongoDB](https://www.mongodb.com/ "MongoDB")
 * Cloud: [Cloudinary](https://cloudinary.com/ "Cloudinary")
 
 ## Installation
