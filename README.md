@@ -5,9 +5,9 @@ Share your personal life stories with other people anonymously (inspired by askp
 
 ## Technologies
 * <ins>Client</ins>: [React](https://reactjs.org/ "React") (Hooks, ContextAPI)
-* <insServer</ins>: [Node.js](https://nodejs.org/en/ "Node.js") (Express, Mongoose)
-* <insDatabase</ins>: [MongoDB](https://www.mongodb.com/ "MongoDB")
-* <insCloud</ins>: [Cloudinary](https://cloudinary.com/ "Cloudinary")
+* <ins>Server</ins>: [Node.js](https://nodejs.org/en/ "Node.js") (Express, Mongoose)
+* <ins>Database</ins>: [MongoDB](https://www.mongodb.com/ "MongoDB")
+* <ins>Cloud</ins>: [Cloudinary](https://cloudinary.com/ "Cloudinary")
 
 ## Installation
 Open Terminal and cd to /sharewithus folder
