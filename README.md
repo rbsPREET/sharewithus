@@ -1,6 +1,7 @@
 # ShareWithUs - (rbsPREET / Rotem Bar-Sela)
 
 Share your personal life stories with other people (inspired by askp.co.il)
+> WEBSITE LINK SOON
 
 ## Technologies
 * Client: React (Hooks, ContextAPI)
@@ -27,5 +28,3 @@ PORT=5000
 MONGO_URL=<Go to https://www.mongodb.com/cloud to create a new project and paste the database URL here>
 JWT_SECRET=<replace>
  ```
- 
-> WEBSITE LINK SOON
