@@ -6,7 +6,7 @@ import { questionsList } from '../Header/newquestionsData'
 const RightSideContent = () => {
     return (
         <Box>
-            <SectionCard header="Most Viewed Posts Today" >
+            <SectionCard header="Most Popular Posts Today" >
                 <Stack direction='row' spacing={1} mb={1}>
                     <Button fullWidth sx={{ p: 1 }} size='small' variant='contained'>Today</Button>
                     <Button fullWidth sx={{ p: 1 }} size='small' variant='contained'>This Week</Button>

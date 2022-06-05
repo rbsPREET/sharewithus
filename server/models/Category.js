@@ -8,6 +8,10 @@ const categorySchema = mongoose.Schema({
     posts: {
         type: [String],
         ref: 'Post',
+    },
+    commentsCount: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true })
 

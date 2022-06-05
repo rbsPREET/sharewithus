@@ -21,7 +21,15 @@ const postSchema = mongoose.Schema({
     imageURL: {
         type: String,
     },
+    status: {
+        type: Boolean,
+        default: false
+    },
     comments: {
+        type: [String],
+        ref: 'Comment'
+    },
+    commentsCount: {
         type: Number,
         default: 0
     }

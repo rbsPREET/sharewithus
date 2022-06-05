@@ -14,9 +14,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path='/:categoryName' element={<Category />} />
-          <Route path='/:categoryName/:postId' element={<Post />} />
+          <Route path='/' exact element={<Home />} />
+          <Route path='/:categoryName' exact element={<Category />} />
+          <Route path='/:categoryName/search' exact element={<Category />} />
+          <Route path='/:categoryName/:postId' exact element={<Post />} />
           {user && (
             <Route path='/create' element={<CreatePost />} />
           )}

@@ -5,17 +5,16 @@ import { Refresh } from '@mui/icons-material'
 import { questionsList } from './newquestionsData'
 import useFetch from '../../../hooks/useFetch'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const ListItemStyled = styled(ListItem)(({ theme }) => ({
     backgroundColor: '#fafafa',
 }))
 
 const NewQuestions = () => {
-    const { data, loading, error, reFetch } = useFetch("/posts?limit=20")
+    const { data, loading, error, reFetch } = useFetch("/posts?page=1")
 
-    useEffect(() => {
-        console.log(data)
-    })
+    console.log(data)
 
     return (
         <Box flex={2}>
@@ -39,29 +38,31 @@ const NewQuestions = () => {
                         pt: 0,
                         pb: 0,
                     }}>
-                    {data?.map((question) => (
-                        loading ? <Skeleton width={'100%'} height={'57px'} /> :
-                            <ListItemStyled button={true} key={question._id}>
-                                <ListItemText
-                                    sx={{ flex: 2 }}
-                                    primary={question?.title}
-                                    primaryTypographyProps={{ fontSize: '14px' }}
-                                    secondary={`(${question?.createdBy?.username}, ${question?.createdBy?.age}${question?.createdBy?.gender.charAt(0)}, ${question?.categoryId?.categoryName})`}
-                                    secondaryTypographyProps={{ fontSize: '11px', textTransform: 'capitalize' }}
-                                />
-                                <Divider orientation="vertical" flexItem />
-                                <ListItemText
-                                    sx={{ flex: 1, textAlign: 'center' }}
-                                    primary={`Uploaded: ${question?.createdAt}`}
-                                    primaryTypographyProps={{ fontSize: '13px' }}
-                                />
-                                <Divider orientation="vertical" flexItem />
-                                <ListItemText
-                                    sx={{ flex: 1, textAlign: 'center' }}
-                                    primary={`${question?.comments} comments`}
-                                    primaryTypographyProps={{ fontSize: '13px' }}
-                                />
-                            </ListItemStyled>
+                    {data.data?.map((post) => (
+                        loading ? <Skeleton key={post._id} width={'100%'} height={'57px'} /> :
+                            <Link key={post._id} to={`/${post?.categoryId?.categoryName.toLowerCase()}/${post?._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <ListItemStyled button={true}>
+                                    <ListItemText
+                                        sx={{ flex: 2 }}
+                                        primary={post?.title}
+                                        primaryTypographyProps={{ fontSize: '14px' }}
+                                        secondary={`(${post?.createdBy?.username}, ${post?.createdBy?.age}${post?.createdBy?.gender.charAt(0)}, ${post?.categoryId?.categoryName})`}
+                                        secondaryTypographyProps={{ fontSize: '11px', textTransform: 'capitalize' }}
+                                    />
+                                    <Divider orientation="vertical" flexItem />
+                                    <ListItemText
+                                        sx={{ flex: 1, textAlign: 'center' }}
+                                        primary={`Uploaded: ${post?.createdAt}`}
+                                        primaryTypographyProps={{ fontSize: '13px' }}
+                                    />
+                                    <Divider orientation="vertical" flexItem />
+                                    <ListItemText
+                                        sx={{ flex: 1, textAlign: 'center' }}
+                                        primary={`${post?.commentsCount} comments`}
+                                        primaryTypographyProps={{ fontSize: '13px' }}
+                                    />
+                                </ListItemStyled>
+                            </Link>
                     ))}
                 </List>
             </Paper>

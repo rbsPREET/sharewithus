@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Delete from '@mui/icons-material/Delete';
+import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
+import BlockOutlined from '@mui/icons-material/BlockOutlined';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -29,23 +31,28 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-const DataTable = ({ headerCells, rowsCells, handleDeletion }) => {
+const DataTable = ({ headerCells, rowsCells, handleDeletion, handleStatus }) => {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                 <TableHead>
                     <TableRow>
-                        {headerCells.map((cell, index) => (
+                        {headerCells?.map((cell, index) => (
                             <StyledTableCell key={index} align={index === 0 ? "left" : "center"}>{cell}</StyledTableCell>
                         ))}
                         <StyledTableCell align="center"></StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rowsCells.map((row, index) => (
+                    {rowsCells?.map((row, index) => (
                         <StyledTableRow key={index}>
                             {Object.keys(row).map((item, index) => (
-                                <StyledTableCell key={index} align={index === 0 ? "left" : "center"}>{row[item]}</StyledTableCell>
+                                row[item] === row.status ?
+                                    <StyledTableCell key={index} onClick={() => handleStatus(row.id)} align="center">
+                                        {row[item] ? <CheckCircleOutline color="success" sx={{ cursor: 'pointer' }} /> : <BlockOutlined color="warning" sx={{ cursor: 'pointer' }} />}
+                                    </StyledTableCell>
+                                    :
+                                    <StyledTableCell key={index} align={index === 0 ? "left" : "center"}>{row[item]}</StyledTableCell>
                             ))}
                             <StyledTableCell align="right" onClick={() => handleDeletion(row.id)}>
                                 {row.permission !== "ADMIN" && <Delete color="error" sx={{ cursor: 'pointer' }} />}

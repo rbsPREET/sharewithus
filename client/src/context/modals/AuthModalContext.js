@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     open: false
 }
 
-export const ModalView = "login" || "register" || "resetPassword";
+// export const ModalView = "login" || "register" || "resetPassword";
 
 export const AuthModalContext = createContext(INITIAL_STATE)
 

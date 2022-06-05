@@ -5,7 +5,6 @@ import { AuthContext } from '../../../context/modals/AuthContext'
 const ReviewForm = ({ data }) => {
     const { user } = useContext(AuthContext)
 
-    console.log(user)
     return (
         <>
             <Paper variant="outlined" square >
@@ -25,6 +24,7 @@ const ReviewForm = ({ data }) => {
                     <Typography variant='body2'>
                         {data.description}
                     </Typography>
+                    <img src={data.imageURL ? URL.createObjectURL(data.imageURL) : ''} alt="imageURL" />
                 </Stack>
             </Paper>
         </>

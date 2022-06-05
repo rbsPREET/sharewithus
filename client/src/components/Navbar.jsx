@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Box, Stack, Divider, Grid, Button, Avatar } from '@mui/material'
+import React, { useContext } from 'react'
+import { AppBar, Toolbar, IconButton, Typography, Box, Stack, Divider, Grid, Button, Avatar, Tooltip } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { Home, Person } from '@mui/icons-material'
+import { AddCircleOutline, Home } from '@mui/icons-material'
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthModalContext } from '../context/modals/AuthModalContext'
 import { deepPurple } from '@mui/material/colors';
@@ -32,8 +32,8 @@ const Navbar = () => {
 
     return (
         <>
-            <Box sx={{ minHeight: '64px' }} >
-                <AppBar position='static' sx={{ bgcolor: '#000535' }}>
+            <Box sx={{ minHeight: '64px' }}>
+                <AppBar position='static' variant='outlined' sx={{ bgcolor: '#000535' }}>
                     <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between' }}>
                         <IconButton LinkComponent={Link} to='/' sx={{ mr: 1 }} edge="start" color="inherit">
                             <Home />
@@ -58,12 +58,14 @@ const Navbar = () => {
                             )}
                         </Stack>
                         <Stack flexDirection='row' alignItems="center">
-                            <Typography component="div" onClick={checkUser} variant='button' color='InfoBackground' mr={2}>
-                                Create New Post
-                            </Typography>
+                            <Tooltip title="New Post" arrow>
+                                <IconButton onClick={checkUser} color="info" sx={{ mr: 2 }}>
+                                    <AddCircleOutline />
+                                </IconButton>
+                            </Tooltip>
                             {user
                                 ? (
-                                    <Avatar onClick={() => authDispatch({ type: "LOGOUT" })} sx={{ bgcolor: deepPurple[500], textTransform: 'uppercase', cursor: 'pointer' }}>{user?.result.username.charAt(0)}</Avatar>
+                                    <Avatar onClick={() => authDispatch({ type: "LOGOUT" })} sx={{ bgcolor: deepPurple[500], mr: 0, textTransform: 'uppercase', cursor: 'pointer' }}>{user?.result.username.charAt(0)}</Avatar>
                                 )
                                 : (
                                     <>
@@ -76,7 +78,7 @@ const Navbar = () => {
                                             sx={{ cursor: 'pointer' }}>
                                             Login
                                         </Typography>
-                                        <Divider orientation='vertical' sx={{ bgcolor: 'white', ml: 2, mr: 2 }} flexItem />
+                                        <Divider orientation='vertical' sx={{ bgcolor: 'white', ml: 2, mr: 2, mt: 1, mb: 1 }} flexItem />
                                         <Typography
                                             onClick={(e) => handleAuthModal(e)}
                                             variant="h7"

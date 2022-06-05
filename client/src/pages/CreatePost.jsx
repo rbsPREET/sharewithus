@@ -1,5 +1,5 @@
 import { Home } from '@mui/icons-material';
-import { Box, Button, Container, IconButton, Paper, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material'
+import { Box, Button, Container, IconButton, Paper, Step, StepLabel, Stepper, Typography } from '@mui/material'
 import { Favorite, PregnantWoman, FamilyRestroom, MilitaryTech, School, FitnessCenter, Work, Loyalty } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ const CreatePost = () => {
     const [activeStep, setActiveStep] = useState(0);
     // User Auth details with Redux state
     const [postDetails, setPostDetails] = useState({
-        category: "", title: "", description: "",
+        category: "", title: "", description: "", imageURL: ""
     })
 
     const navigate = useNavigate()
@@ -35,13 +35,41 @@ const CreatePost = () => {
 
     // Handle Content of the Post (Step 2)
     const handleContentForm = (e) => {
-        setPostDetails({
-            ...postDetails,
-            [e.target.name]: e.target.value
-        })
+        if (e.target.name === "imageURL") {
+            setPostDetails({
+                ...postDetails,
+                [e.target.name]: e.target.files[0]
+            })
+        }
+        else {
+            setPostDetails({
+                ...postDetails,
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
     const handleSubmit = async () => {
+        // image upload section
+        if (postDetails.imageURL !== '') {
+            const fileData = new FormData()
+            fileData.append('file', postDetails.imageURL)
+            fileData.append('upload_preset', 'sharewithus')
+            try {
+                const uploadDataRes = await axios.post('https://api.cloudinary.com/v1_1/dvvqj0wwi/image/upload', fileData)
+                console.log(uploadDataRes.data)
+                const { url } = uploadDataRes.data
+
+                setPostDetails({
+                    ...postDetails,
+                    imageURL: url
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        // submit to database
         try {
             await axios.post("/posts", postDetails)
             navigate('/')
@@ -69,7 +97,7 @@ const CreatePost = () => {
 
     // fetch data when navigating back and forth in the steps
     const [postDataTemp, setPostDataTemp] = useState({
-        categorySelectedId: null, title: '', description: ''
+        categorySelectedId: null, title: '', description: '', imageURL: ''
     })
 
     const getStepContent = (step) => {
@@ -79,7 +107,7 @@ const CreatePost = () => {
             case 1:
                 return <ContentForm postDataTemp={postDataTemp} setPostDataTemp={setPostDataTemp} handleContentForm={handleContentForm} />;
             case 2:
-                return <ReviewForm data={postDetails} />;
+                return <ReviewForm data={postDataTemp} />;
             default:
                 throw new Error('Unknown step');
         }
