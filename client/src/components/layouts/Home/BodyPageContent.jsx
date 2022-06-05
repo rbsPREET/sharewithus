@@ -1,16 +1,16 @@
-import { Stack } from '@mui/material'
+import { Grid, Stack } from '@mui/material'
 import React from 'react'
 
 const BodyPageContent = ({ children }) => {
     return (
-        <Stack direction='row' spacing={2}>
-            <Stack flex={2} direction='column'>
+        <Grid container spacing={2}>
+            <Grid item sm={12} md={6}>
                 {children[0]}
-            </Stack>
-            <Stack flex={1} direction='column' sx={{ display: { xs: 'none', md: 'flex' } }}>
+            </Grid>
+            <Grid item sm={0} md={6}>
                 {children[1]}
-            </Stack>
-        </Stack>
+            </Grid>
+        </Grid>
     )
 }
 

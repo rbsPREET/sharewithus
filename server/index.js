@@ -9,6 +9,7 @@ import authRoute from './routes/auth.js'
 import postRoute from './routes/posts.js'
 import userRoute from './routes/users.js'
 import categoryRoute from './routes/category.js'
+import commentRoute from './routes/comments.js'
 
 dotenv.config()
 
@@ -32,6 +33,7 @@ app.use('/auth', authRoute)
 app.use('/users', userRoute)
 app.use('/categories', categoryRoute)
 app.use('/posts', postRoute)
+app.use('/comments', commentRoute)
 
 // Mongo DB connection
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })

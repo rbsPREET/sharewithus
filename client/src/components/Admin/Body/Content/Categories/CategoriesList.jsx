@@ -4,7 +4,7 @@ import DataTable from '../DataTable'
 import axios from 'axios'
 
 const CategoriesList = () => {
-    const { data, loading, error, reFetch } = useFetch("/categories?limit=5")
+    const { data, loading, error, reFetch } = useFetch("/categories")
 
     const createData = (name, id, postsLength, created) => {
         return { name, id, postsLength, created }

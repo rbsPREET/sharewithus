@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import Category from "../models/Category.js"
+import Post from "../models/Post.js"
 
 export const getCategories = async (req, res) => {
     try {
@@ -50,4 +51,20 @@ export const deleteCategory = async (req, res) => {
         return res.status(404).send('Not a valid Category Id')
     await Category.findByIdAndDelete(_id)
     res.json({ message: `Category with the Id: ${_id} and Name "${req.body.name}" has been deleted` })
+}
+
+export const getPopularCategoryPosts = async (req, res) => {
+    const { id: categoryId } = req.params
+    console.log(categoryId)
+    if (!mongoose.Types.ObjectId.isValid(categoryId))
+        return res.status(404).send('Not a valid Category Id')
+    try {
+        const popularPosts = await Post.find({ categoryId }).limit(5).populate([
+            { path: 'createdBy', model: 'User', select: 'username email age gender' },
+            { path: 'categoryId', model: 'Category', select: 'categoryName' }
+        ])
+        res.status(200).json(popularPosts)
+    } catch (error) {
+        res.status(404).json({ message: err })
+    }
 }

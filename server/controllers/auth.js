@@ -19,7 +19,7 @@ export const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 12)
         const result = await User.create({ username, email, password: hashedPassword, age, gender })
-        const token = jwt.sign({ id: result._id, email: result.email, isAdmin: result.isAdmin }, process.env.JWT_SECRET, { expiresIn: "3h" })
+        const token = jwt.sign({ id: result._id, email: result.email, username: isUserExist.username, isAdmin: result.isAdmin }, process.env.JWT_SECRET, { expiresIn: "3h" })
         res.cookie(
             "access_token",
             token,
@@ -42,7 +42,7 @@ export const login = async (req, res) => {
         if (!isPasswordCorrect)
             return res.status(400).json({ message: "Email or Password are not correct" })
 
-        const token = jwt.sign({ id: isUserExist._id, email: isUserExist.email, isAdmin: isUserExist.isAdmin }, process.env.JWT_SECRET, { expiresIn: "3h" })
+        const token = jwt.sign({ id: isUserExist._id, email: isUserExist.email, username: isUserExist.username, isAdmin: isUserExist.isAdmin }, process.env.JWT_SECRET, { expiresIn: "3h" })
         res.cookie(
             "access_token",
             token,

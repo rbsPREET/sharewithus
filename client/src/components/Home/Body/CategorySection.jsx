@@ -9,9 +9,8 @@ const ListItemStyled = styled(ListItem)(({ theme }) => ({
 }))
 
 const CategorySection = ({ category }) => {
-    const { data, loading } = useFetch(`/posts?categoryId=${category._id}&limit=10`)
+    const { data, loading } = useFetch(`/posts?categoryId=${category._id}`)
 
-    console.log(data)
     return (
         <Paper sx={{ mb: 2, }}>
             <Stack direction='column'>
@@ -57,7 +56,7 @@ const CategorySection = ({ category }) => {
                             p: 0
                         }}>
                         {loading ? "Loading..." :
-                            data.map((post) => (
+                            data.data?.map((post) => (
                                 <ListItemStyled sx={{ flexDirection: { xs: 'column', md: 'row' }, borderBottom: { xs: '1px solid gray', md: 'none' } }} button={true} key={post._id}>
                                     <ListItemText
                                         sx={{ flex: 2 }}

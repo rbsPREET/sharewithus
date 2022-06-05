@@ -2,12 +2,19 @@ import { Box, Card, CardMedia, Divider, Grid, ImageList, ImageListItem, ImageLis
 import React from 'react'
 
 const InterstingQuestions = () => {
+    let currentDate = new Date()
+    let day = currentDate.getDate()
+    let month = currentDate.getMonth() + 1
+
     return (
         <Box flex={1}>
-            <Paper sx={{ p: 1, pb: 0 }} >
-                <Stack>
-                    <Typography variant='h6' pb={1}>
-                        Intersting Questions (Date.now())
+            <Paper sx={{ p: 2, pb: 0, pt: 1 }} >
+                <Stack direction="row" alignItems="center" pb={1}>
+                    <Typography variant='h6'>
+                        Intersting Question&nbsp;
+                    </Typography>
+                    <Typography variant='h6' color={"#1976d2"}>
+                        {("(" + day + "/" + month + ")")}
                     </Typography>
                     <Divider />
                 </Stack>
@@ -37,7 +44,7 @@ const InterstingQuestions = () => {
                     <ImageList cols={1} sx={{
                         position: 'relative',
                         overflow: 'auto',
-                        maxHeight: '50vh',
+                        maxHeight: '385px',
                         marginTop: 1,
                     }}>
                         {itemData.map((item) => (

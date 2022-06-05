@@ -13,7 +13,7 @@ const Users = () => {
     }
 
     const rows = data.map((user) => (
-        createData(user.email, user._id, user.username, user.age, user.gender === "Male" ? "M" : "F", user.createdAt, user.isAdmin ? "ADMIN" : "User", user.status ? <CheckCircleOutlineIcon color="success" /> : <BlockOutlinedIcon color="warning" />)
+        createData(user.email, user._id, user.username, user.age, user.gender === "Male" ? "M" : "F", user.createdAt, user.isAdmin ? "ADMIN" : "User", user.status)
     ))
 
     const handleDeletion = async (id) => {
@@ -25,11 +25,21 @@ const Users = () => {
         }
     }
 
+    const handleStatus = async (id) => {
+        try {
+            const res = await axios.update(`/posts/${id}`)
+            reFetch()
+        } catch (error) {
+            console.log("Status Updated")
+        }
+    }
+
     return (
         <DataTable
             headerCells={["Email", "ID", "Username", "Age", "Gender", "Created", "Permission", "Status"]}
             rowsCells={rows}
             handleDeletion={handleDeletion}
+            handleStatus={handleStatus}
         />
     )
 }
